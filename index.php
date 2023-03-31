@@ -82,9 +82,6 @@ $todos = $stmt->get_result();
                         
                     <tr>
                       <th scope="col">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                            </div>
                           </th>
                           <th scope="col">TASK DISCRIPTION</th>
                           <th scope="col">ASSIGN DATE</th>
@@ -115,10 +112,6 @@ $todos = $stmt->get_result();
                           </td>
                           
                           <td>
-                            <i class="material-icons" style="color:red;">delete</i>
-                          </td>
-
-                          <td>
                           
                           <div class="form-check">
                               <form action="check.php" method="POST" id="quick_access<?php echo $todo['ID'];?>">
@@ -142,6 +135,19 @@ $todos = $stmt->get_result();
                               </form>
                             
                             </div>
+                          </td>
+
+                          <td>
+
+                            <form action="delete.php" method="POST" id="delete<?php echo $todo['ID'];?>">
+                              
+                              <input type="hidden" value="<?php echo $todo['ID']; ?>" name="task_id">
+                              
+                              <i input="submit" class="material-icons" style="color:red; cursor: pointer;" 
+                                onclick="document.getElementById('delete'+<?php echo $todo['ID'];?>).submit();">delete</i>
+                            
+                            </form>
+                          
                           </td>
                         
                         </tr>
