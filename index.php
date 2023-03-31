@@ -40,7 +40,8 @@ $todos = $stmt->get_result();
 
   <section class="intro">
 
-    <div class="bg-image h-100" style="background-color: #6095F0;">
+    <div class="bg-image h-100" style="background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);">
 
       <div class="mask d-flex align-items-center h-100">
 
