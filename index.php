@@ -101,7 +101,13 @@ $todos = $stmt->get_result();
                           <th scope="row">
                             <!-- CHECK BOX -->
                             <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked/>
+                              <form action="check.php" method="POST">
+                                <?php if($todo['STATUS'] == 0){?>
+                                  <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault1" name="status[]"/>
+                                <?php }else{?>
+                                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1" name="status[]" checked/>
+                                <?php }?>
+                              </form>
                             </div>
                           </th>
                                                     
@@ -110,7 +116,7 @@ $todos = $stmt->get_result();
                           <td><?php echo $todo['DATE_TODO'];?></td>
                           
                           <td>
-                            <?php if(!$todo['DATE_TODO'] == 0){?>
+                            <?php if($todo['STATUS'] == 0){?>
                               <span class="badge rounded-pill text-bg-warning">Incomplete</span>
                             <?php }else{?>
                               <span class="badge rounded-pill text-bg-success">Complete</span>
