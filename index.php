@@ -139,11 +139,12 @@ $todos = $stmt->get_result();
 
                           <td>
 
+                          <!-- TASK DELETE FROM DATABASE -->                            
                             <form action="delete.php" method="POST" id="delete<?php echo $todo['ID'];?>">
                               
-                              <input type="hidden" value="<?php echo $todo['ID']; ?>" name="task_id">
+                              <input type="hidden" value="<?php echo $todo['ID']; ?>" name="delete_id">
                               
-                              <i input="submit" class="material-icons" style="color:red; cursor: pointer;" 
+                              <i class="material-icons" style="color:red; cursor: pointer;" 
                                 onclick="document.getElementById('delete'+<?php echo $todo['ID'];?>).submit();">delete</i>
                             
                             </form>
