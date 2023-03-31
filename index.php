@@ -101,11 +101,12 @@ $todos = $stmt->get_result();
                           <th scope="row">
                             <!-- CHECK BOX -->
                             <div class="form-check">
-                              <form action="check.php" method="POST">
+                              <form action="check.php" method="POST" id="status_submit">
+                                <input type="hidden" value="<?php echo $todo['ID']; ?>" name="task_id">
                                 <?php if($todo['STATUS'] == 0){?>
-                                  <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault1" name="status[]"/>
+                                  <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault1" name="status" onclick="autosubmit();"/>
                                 <?php }else{?>
-                                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1" name="status[]" checked/>
+                                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1" name="status" onclick="autosubmit();" checked/>
                                 <?php }?>
                               </form>
                             </div>
@@ -154,5 +155,14 @@ $todos = $stmt->get_result();
 </section>
 
 </body>
+
+<script>
+  function autosubmit()
+  {
+    document.getElementById("status_submit").submit();
+
+    console.log('Clicked By User');
+  }
+</script>
 
 </html>
