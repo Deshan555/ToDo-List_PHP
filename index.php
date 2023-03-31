@@ -100,16 +100,6 @@ $todos = $stmt->get_result();
                           
                           <th scope="row">
                             <!-- CHECK BOX -->
-                            <div class="form-check">
-                              <form action="check.php" method="POST" id="status_submit">
-                                <input type="hidden" value="<?php echo $todo['ID']; ?>" name="task_id">
-                                <?php if($todo['STATUS'] == 0){?>
-                                  <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault1" name="status" onclick="autosubmit();"/>
-                                <?php }else{?>
-                                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1" name="status" onclick="autosubmit();" checked/>
-                                <?php }?>
-                              </form>
-                            </div>
                           </th>
                                                     
                           <td><?php echo $todo['TODO'];?></td>
@@ -126,6 +116,32 @@ $todos = $stmt->get_result();
                           
                           <td>
                             <i class="material-icons" style="color:red;">delete</i>
+                          </td>
+
+                          <td>
+                          
+                          <div class="form-check">
+                              <form action="check.php" method="POST" id="quick_access<?php echo $todo['ID'];?>">
+                                
+                                <input type="hidden" value="<?php echo $todo['ID']; ?>" name="task_id">
+
+                                <input type="hidden" value="<?php echo $todo['STATUS']; ?>" name="task_status">
+                                
+                                <?php if($todo['STATUS'] == 0){?>
+                                  
+                                  <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault1" name="status" 
+                                  onclick="document.getElementById('quick_access'+<?php echo $todo['ID'];?>).submit();"/>
+                                
+                                <?php }else{?>
+                                
+                                  <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault1" name="status" 
+                                  checked onclick="document.getElementById('quick_access'+<?php echo $todo['ID'];?>).submit();"/>
+                                
+                                  <?php }?>
+                              
+                              </form>
+                            
+                            </div>
                           </td>
                         
                         </tr>
@@ -155,14 +171,5 @@ $todos = $stmt->get_result();
 </section>
 
 </body>
-
-<script>
-  function autosubmit()
-  {
-    document.getElementById("status_submit").submit();
-
-    console.log('Clicked By User');
-  }
-</script>
 
 </html>
